@@ -5,38 +5,41 @@ let limpiar = true;
 let estudiante = [
     { nombre: "mariley", porcentajTecnico: "78", hse: "78" },
     { nombre: "yudit", porcentajTecnico: "90", hse: "90" },
-    { nombre: "ka;ina", porcentajTecnico: "23", hse: "89" }
+    { nombre: "karina", porcentajTecnico: "23", hse: "89" }
 ];
-inicio() => {
-        this.nombre = $('#inputNombreApellido');
-        this.puntajeTecnico = $('#inputPorcentajeTecnico');
-        this.poncentajeHSE = $('#inputHSE');
-        recordsEstudiante.configuracionBTN();
-    },
-    configuracionBTN() => {
-        $('#agregarEstudiante').click(recordsEstudiante.guardarDatoEstudiante);
-        $('#mostrarLista').click(recordsEstudiante.mostrarListaEstudiantes);
-    },
-    guardarDatoEstudiante() => {
-        recordsEstudiante.limpiarAlerta();
-        if (this.nombre.val() == "" || this.puntajeTecnico.val() == "" || this.poncentajeHSE.val() == "") {
-            $('#alerta').append(`<div class="alert alert-danger" role="alert">\
+
+function inicio() {
+    this.nombre = $('#inputNombreApellido');
+    this.puntajeTecnico = $('#inputPorcentajeTecnico');
+    this.poncentajeHSE = $('#inputHSE');
+    recordsEstudiante.configuracionBTN();
+}
+
+function configuracionBTN() {
+    $('#agregarEstudiante').click(recordsEstudiante.guardarDatoEstudiante);
+    $('#mostrarLista').click(recordsEstudiante.mostrarListaEstudiantes);
+}
+
+function guardarDatoEstudiante() {
+    recordsEstudiante.limpiarAlerta();
+    if (this.nombre.val() == "" || this.puntajeTecnico.val() == "" || this.poncentajeHSE.val() == "") {
+        $('#alerta').append(`<div class="alert alert-danger" role="alert">\
             !Escribe algo.</div>`);
-        } else {
-            let datos = {
-                nombre: this.nombre.val(),
-                porcentajTecnico: this.puntajeTecnico.val(),
-                hse: this.poncentajeHSE.val()
-            }
-            recordsEstudiante.estudiante.push(datos);
-            $('#alerta').append(`<div class="alert alert-success" role="alert">\
-                 !Registrado con Exito.</div>`);
-            recordsEstudiante.limpiarFormulario();
-            recordsEstudiante.imprimirUltimo();
-            console.log(recordsEstudiante.estudiante);
+    } else {
+        let datos = {
+            nombre: this.nombre.val(),
+            porcentajTecnico: this.puntajeTecnico.val(),
+            hse: this.poncentajeHSE.val()
         }
-    },
-    limpiarFormulario: () => {
+        recordsEstudiante.estudiante.push(datos);
+        $('#alerta').append(`<div class="alert alert-success" role="alert">\
+                 !Registrado con Exito.</div>`);
+        recordsEstudiante.limpiarFormulario();
+        recordsEstudiante.imprimirUltimo();
+        console.log(recordsEstudiante.estudiante);
+    }
+},
+limpiarFormulario: () => {
         $('#inputNombreApellido').val("");
         $('#inputPorcentajeTecnico').val("");
         $('#inputHSE').val("")

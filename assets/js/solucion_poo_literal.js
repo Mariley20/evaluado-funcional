@@ -62,25 +62,22 @@ const recordsEstudiante = {
     },
     mostrarListaEstudiantes: () => {
         recordsEstudiante.estudiante.map((elemento) => {
-            $('#resultadosRecord').append(`<div class="row">\
-            <div class="col-xl-4 col-sm-4">${elemento.nombre}</div>\
-            <div class="col-xl-4 col-sm-4">${elemento.porcentajTecnico}</div>\
-            <div class="col-xl-4 col-sm-4">${elemento.hse}</div>\
-        </div>`);
+            recordsEstudiante.dibujarLista(elemento);
         });
+    },
+    dibujarLista: (elemento) => {
+        $('#resultadosRecord').append(`<div class="row">\
+        <div class="col-xl-4 col-sm-4">${elemento.nombre}</div>\
+        <div class="col-xl-4 col-sm-4">${elemento.porcentajTecnico}</div>\
+        <div class="col-xl-4 col-sm-4">${elemento.hse}</div>\
+    </div>`);
     },
     filtrarMayor70: () => {
         recordsEstudiante.estudiante.filter((elemento) => {
-            if (elemento.porcentajTecnico >= 70 && elemento.hse >= 70) {
-                $('#resultadosRecord').append(`<div class="row">\
-            <div class="col-xl-4 col-sm-4">${elemento.nombre}</div>\
-            <div class="col-xl-4 col-sm-4">${elemento.porcentajTecnico}</div>\
-            <div class="col-xl-4 col-sm-4">${elemento.hse}</div>\
-        </div>`);
-            }
-
+            return (elemento.porcentajTecnico >= 70 && elemento.hse >= 70) ?
+                recordsEstudiante.dibujarLista(elemento) : console.log('');
         });
+        console.log(recordsEstudiante.estudiante)
     }
-
 }
 $(document).ready(recordsEstudiante.inicio);

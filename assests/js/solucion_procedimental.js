@@ -38,35 +38,40 @@ function guardarDatoEstudiante() {
         recordsEstudiante.imprimirUltimo();
         console.log(recordsEstudiante.estudiante);
     }
-},
-limpiarFormulario: () => {
-        $('#inputNombreApellido').val("");
-        $('#inputPorcentajeTecnico').val("");
-        $('#inputHSE').val("")
-    },
-    imprimirUltimo: () => {
-        let indice = recordsEstudiante.estudiante.length - 1;
-        recordsEstudiante.resultadosRecordLimpiar();
-        $('#resultadosRecord').append(`<div class="row">\
+}
+
+function limpiarFormulario() {
+    $('#inputNombreApellido').val("");
+    $('#inputPorcentajeTecnico').val("");
+    $('#inputHSE').val("")
+}
+
+function imprimirUltimo() {
+    let indice = recordsEstudiante.estudiante.length - 1;
+    recordsEstudiante.resultadosRecordLimpiar();
+    $('#resultadosRecord').append(`<div class="row">\
             <div class="col-xl-4">${recordsEstudiante.estudiante[indice].nombre}</div>\
             <div class="col-xl-4">${recordsEstudiante.estudiante[indice].porcentajTecnico}</div>\
             <div class="col-xl-4">${recordsEstudiante.estudiante[indice].hse}</div>\
         </div>`);
-    },
-    resultadosRecordLimpiar: () => {
-        $('#resultadosRecord').empty();
-    },
-    limpiarAlerta: () => {
-        $('#alerta').empty();
-    },
-    mostrarListaEstudiantes: () => {
-        recordsEstudiante.estudiante.map((elemento) => {
-            $('#resultadosRecord').append(`<div class="row">\
+}
+
+function resultadosRecordLimpiar() {
+    $('#resultadosRecord').empty();
+}
+
+function limpiarAlerta() {
+    $('#alerta').empty();
+}
+
+function mostrarListaEstudiantes() {
+    recordsEstudiante.estudiante.map((elemento) {
+        $('#resultadosRecord').append(`<div class="row">\
             <div class="col-xl-4">${elemento.nombre}</div>\
             <div class="col-xl-4">${elemento.porcentajTecnico}</div>\
             <div class="col-xl-4">${elemento.hse}</div>\
         </div>`);
-        });
-    }
+    });
+}
 
 inicio()

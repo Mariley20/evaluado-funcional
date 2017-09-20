@@ -12,16 +12,16 @@ function inicio() {
     this.nombre = $('#inputNombreApellido');
     this.puntajeTecnico = $('#inputPorcentajeTecnico');
     this.poncentajeHSE = $('#inputHSE');
-    recordsEstudiante.configuracionBTN();
+    configuracionBTN();
 }
 
 function configuracionBTN() {
-    $('#agregarEstudiante').click(recordsEstudiante.guardarDatoEstudiante);
-    $('#mostrarLista').click(recordsEstudiante.mostrarListaEstudiantes);
+    $('#agregarEstudiante').click(guardarDatoEstudiante);
+    $('#mostrarLista').click(mostrarListaEstudiantes);
 }
 
 function guardarDatoEstudiante() {
-    recordsEstudiante.limpiarAlerta();
+    limpiarAlerta();
     if (this.nombre.val() == "" || this.puntajeTecnico.val() == "" || this.poncentajeHSE.val() == "") {
         $('#alerta').append(`<div class="alert alert-danger" role="alert">\
             !Escribe algo.</div>`);
@@ -31,12 +31,12 @@ function guardarDatoEstudiante() {
             porcentajTecnico: this.puntajeTecnico.val(),
             hse: this.poncentajeHSE.val()
         }
-        recordsEstudiante.estudiante.push(datos);
+        estudiante.push(datos);
         $('#alerta').append(`<div class="alert alert-success" role="alert">\
                  !Registrado con Exito.</div>`);
-        recordsEstudiante.limpiarFormulario();
-        recordsEstudiante.imprimirUltimo();
-        console.log(recordsEstudiante.estudiante);
+        limpiarFormulario();
+        imprimirUltimo();
+        console.log(estudiante);
     }
 }
 
@@ -47,12 +47,12 @@ function limpiarFormulario() {
 }
 
 function imprimirUltimo() {
-    let indice = recordsEstudiante.estudiante.length - 1;
-    recordsEstudiante.resultadosRecordLimpiar();
+    let indice = estudiante.length - 1;
+    resultadosRecordLimpiar();
     $('#resultadosRecord').append(`<div class="row">\
-            <div class="col-xl-4">${recordsEstudiante.estudiante[indice].nombre}</div>\
-            <div class="col-xl-4">${recordsEstudiante.estudiante[indice].porcentajTecnico}</div>\
-            <div class="col-xl-4">${recordsEstudiante.estudiante[indice].hse}</div>\
+            <div class="col-xl-4">${estudiante[indice].nombre}</div>\
+            <div class="col-xl-4">${estudiante[indice].porcentajTecnico}</div>\
+            <div class="col-xl-4">${estudiante[indice].hse}</div>\
         </div>`);
 }
 
@@ -65,7 +65,7 @@ function limpiarAlerta() {
 }
 
 function mostrarListaEstudiantes() {
-    recordsEstudiante.estudiante.map((elemento) {
+    estudiante.map((elemento) {
         $('#resultadosRecord').append(`<div class="row">\
             <div class="col-xl-4">${elemento.nombre}</div>\
             <div class="col-xl-4">${elemento.porcentajTecnico}</div>\

@@ -1,6 +1,3 @@
-let nombre;
-let puntajeTecnico;
-let poncentajeHSE;
 let limpiar = true;
 let estudiante = [
     { nombre: "mariley", porcentajTecnico: "78", hse: "78" },
@@ -9,9 +6,6 @@ let estudiante = [
 ];
 
 function inicio() {
-    this.nombre = $('#inputNombreApellido');
-    this.puntajeTecnico = $('#inputPorcentajeTecnico');
-    this.poncentajeHSE = $('#inputHSE');
     configuracionBTN();
 }
 
@@ -22,14 +16,14 @@ function configuracionBTN() {
 
 function guardarDatoEstudiante() {
     limpiarAlerta();
-    if (this.nombre.val() == "" || this.puntajeTecnico.val() == "" || this.poncentajeHSE.val() == "") {
+    if ($('#inputNombreApellido').val() == "" || $('#inputPorcentajeTecnico').val() == "" || $('#inputHSE').val() == "") {
         $('#alerta').append(`<div class="alert alert-danger" role="alert">\
             !Escribe algo.</div>`);
     } else {
         let datos = {
-            nombre: this.nombre.val(),
-            porcentajTecnico: this.puntajeTecnico.val(),
-            hse: this.poncentajeHSE.val()
+            nombre: $('#inputNombreApellido').val(),
+            porcentajTecnico: $('#inputPorcentajeTecnico').val(),
+            hse: $('#inputHSE').val()
         }
         estudiante.push(datos);
         $('#alerta').append(`<div class="alert alert-success" role="alert">\

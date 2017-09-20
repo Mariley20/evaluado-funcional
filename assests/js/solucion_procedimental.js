@@ -65,11 +65,11 @@ function limpiarAlerta() {
 }
 
 function mostrarListaEstudiantes() {
-    estudiante.map((elemento) {
+    estudiante.map((elemento) => {
         $('#resultadosRecord').append(`<div class="row">\
-            <div class="col-xl-4">${elemento.nombre}</div>\
-            <div class="col-xl-4">${elemento.porcentajTecnico}</div>\
-            <div class="col-xl-4">${elemento.hse}</div>\
+            <div class="col-xl-4 col-sm-4">${elemento.nombre}</div>\
+            <div class="col-xl-4 col-sm-4">${elemento.porcentajTecnico}</div>\
+            <div class="col-xl-4 col-sm-4">${elemento.hse}</div>\
         </div>`);
     });
 }

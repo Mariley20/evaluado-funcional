@@ -1,3 +1,4 @@
+'use strict'
 const recordsEstudiante = {
     nombre: undefined,
     puntajeTecnico: undefined,
@@ -17,6 +18,8 @@ const recordsEstudiante = {
     configuracionBTN: () => {
         $('#agregarEstudiante').click(recordsEstudiante.guardarDatoEstudiante);
         $('#mostrarLista').click(recordsEstudiante.mostrarListaEstudiantes);
+        $('#mostrarPuntajesAltos').click(recordsEstudiante.filtrarMayor70)
+
     },
     guardarDatoEstudiante: () => {
         recordsEstudiante.limpiarAlerta();
@@ -46,9 +49,9 @@ const recordsEstudiante = {
         let indice = recordsEstudiante.estudiante.length - 1;
         recordsEstudiante.resultadosRecordLimpiar();
         $('#resultadosRecord').append(`<div class="row">\
-            <div class="col-xl-4">${recordsEstudiante.estudiante[indice].nombre}</div>\
-            <div class="col-xl-4">${recordsEstudiante.estudiante[indice].porcentajTecnico}</div>\
-            <div class="col-xl-4">${recordsEstudiante.estudiante[indice].hse}</div>\
+            <div class="col-xl-4 col-sm-4">${recordsEstudiante.estudiante[indice].nombre}</div>\
+            <div class="col-xl-4 col-sm-4">${recordsEstudiante.estudiante[indice].porcentajTecnico}</div>\
+            <div class="col-xl-4 col-sm-4">${recordsEstudiante.estudiante[indice].hse}</div>\
         </div>`);
     },
     resultadosRecordLimpiar: () => {
@@ -60,10 +63,22 @@ const recordsEstudiante = {
     mostrarListaEstudiantes: () => {
         recordsEstudiante.estudiante.map((elemento) => {
             $('#resultadosRecord').append(`<div class="row">\
-            <div class="col-xl-4">${elemento.nombre}</div>\
-            <div class="col-xl-4">${elemento.porcentajTecnico}</div>\
-            <div class="col-xl-4">${elemento.hse}</div>\
+            <div class="col-xl-4 col-sm-4">${elemento.nombre}</div>\
+            <div class="col-xl-4 col-sm-4">${elemento.porcentajTecnico}</div>\
+            <div class="col-xl-4 col-sm-4">${elemento.hse}</div>\
         </div>`);
+        });
+    },
+    filtrarMayor70: () => {
+        recordsEstudiante.estudiante.filter((elemento) => {
+            if (elemento.porcentajTecnico >= 70 && elemento.hse >= 70) {
+                $('#resultadosRecord').append(`<div class="row">\
+            <div class="col-xl-4 col-sm-4">${elemento.nombre}</div>\
+            <div class="col-xl-4 col-sm-4">${elemento.porcentajTecnico}</div>\
+            <div class="col-xl-4 col-sm-4">${elemento.hse}</div>\
+        </div>`);
+            }
+
         });
     }
 

@@ -4,10 +4,7 @@ let estudiante = [
     { nombre: "yudit", porcentajTecnico: "90", hse: "90" },
     { nombre: "karina", porcentajTecnico: "23", hse: "89" }
 ];
-
-function inicio() {
-    configuracionBTN();
-}
+configuracionBTN();
 
 function configuracionBTN() {
     $('#agregarEstudiante').click(guardarDatoEstudiante);
@@ -67,5 +64,3 @@ function mostrarListaEstudiantes() {
         </div>`);
     });
 }
-
-inicio()

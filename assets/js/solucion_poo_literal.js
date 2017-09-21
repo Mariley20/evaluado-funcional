@@ -63,6 +63,7 @@ const recordsEstudiante = {
         $('#alerta').empty();
     },
     mostrarListaEstudiantes: () => {
+        recordsEstudiante.resultadosRecordLimpiar();
         recordsEstudiante.estudiante.map((elemento) => {
             recordsEstudiante.dibujarLista(elemento);
         });

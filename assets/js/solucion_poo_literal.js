@@ -3,6 +3,7 @@ const recordsEstudiante = {
     nombre: undefined,
     puntajeTecnico: undefined,
     poncentajeHSE: undefined,
+    eliminar: false,
     limpiar: true,
     estudiante: [
         { nombre: "mariley", porcentajTecnico: "78", hse: "78" },
@@ -19,6 +20,7 @@ const recordsEstudiante = {
         $('#agregarEstudiante').click(recordsEstudiante.guardarDatoEstudiante);
         $('#mostrarLista').click(recordsEstudiante.mostrarListaEstudiantes);
         $('#mostrarPuntajesAltos').click(recordsEstudiante.filtrarMayor70)
+        $('#eliminarPuntajesBajos').click(recordsEstudiante.filtrarEliminar);
 
     },
     guardarDatoEstudiante: () => {
@@ -74,10 +76,19 @@ const recordsEstudiante = {
     },
     filtrarMayor70: () => {
         recordsEstudiante.estudiante.filter((elemento) => {
-            return (elemento.porcentajTecnico >= 70 && elemento.hse >= 70) ?
+            return ((parseInt(elemento.porcentajTecnico) + parseInt(elemento.hse)) >= 70) ?
                 recordsEstudiante.dibujarLista(elemento) : console.log('');
         });
-        console.log(recordsEstudiante.estudiante)
+    },
+    filtrarEliminar: () => {
+        console.log('--')
+        let menores70 = recordsEstudiante.estudiante.filter((elemento) => {
+            return ((parseInt(elemento.porcentajTecnico) + parseInt(elemento.hse)) < 70) ?
+                recordsEstudiante.dibujarLista(elemento) : console.log(elemento);
+        });
+        console.log(c)
+        console.log(recordsEstudiante.estudiante);
     }
+
 }
 $(document).ready(recordsEstudiante.inicio);

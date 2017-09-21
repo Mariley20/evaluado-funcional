@@ -3,3 +3,30 @@
     margin: 0 auto;
     box-sizing: border-box;
 }
+
+h1 {
+    font-size: 3vw;
+    background: #ccc;
+    padding: 20px;
+}
+
+button {
+    padding: 10px
+}
+
+.tituloTabla {
+    margin-top: 20px;
+}
+
+.tituloTabla div {
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    background: #00BCD4;
+    border: 2px solid #048899;
+}
+
+#resultadosRecord div {
+    border: 0.01px solid rgba(4, 136, 153, 0.25);
+    background: #ebfdff;
+}

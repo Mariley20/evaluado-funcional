@@ -75,6 +75,7 @@ const recordsEstudiante = {
     </div>`);
     },
     filtrarMayor70: () => {
+        recordsEstudiante.resultadosRecordLimpiar();
         recordsEstudiante.estudiante.filter((elemento) => {
             return ((parseInt(elemento.porcentajTecnico) + parseInt(elemento.hse)) >= 70) ?
                 recordsEstudiante.dibujarLista(elemento) : console.log('');
@@ -84,9 +85,8 @@ const recordsEstudiante = {
         console.log('--')
         let menores70 = recordsEstudiante.estudiante.filter((elemento) => {
             return ((parseInt(elemento.porcentajTecnico) + parseInt(elemento.hse)) < 70) ?
-                recordsEstudiante.dibujarLista(elemento) : console.log(elemento);
+                recordsEstudiante.dibujarLista(elemento) : console.log('');
         });
-        console.log(c)
         console.log(recordsEstudiante.estudiante);
     }
 
